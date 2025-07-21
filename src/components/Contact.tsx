@@ -56,7 +56,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: "Location",
-      value: "Aligarh, Uttar Pradesh, India",
+      value: "Hathras, Uttar Pradesh, India",
       href: "#",
       color: "primary"
     }
