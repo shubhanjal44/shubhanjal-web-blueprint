@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,8 @@ import {
   Send,
   CheckCircle
 } from 'lucide-react';
+import AnimatedSection from '@/components/AnimatedSection';
+import { useIntersectionObserver, useCountUp } from '@/hooks/useScrollAnimations';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +24,12 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // For animated counters
+  const statsRef = useRef<HTMLDivElement>(null);
+  const isStatsVisible = useIntersectionObserver(statsRef);
+  const experienceCount = useCountUp(2, 2000, isStatsVisible);
+  const projectsCount = useCountUp(10, 2000, isStatsVisible);
 
   const contactInfo = [
     {
@@ -90,18 +98,18 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
+        <AnimatedSection animation="fade-up" className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to bring your project to life? Let's discuss how we can work together to create something amazing
           </p>
-        </div>
+        </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <div className="space-y-8 animate-slide-up">
+          <AnimatedSection animation="fade-right" className="space-y-8">
             <div className="space-y-6">
               <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
@@ -112,57 +120,54 @@ const Contact = () => {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {contactInfo.map((info, index) => (
-                <Card 
-                  key={info.label} 
-                  className="bg-gradient-card border-border/50 hover:border-primary/30 transition-all duration-300 animate-scale-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 rounded-xl ${getIconColor(info.color)} flex items-center justify-center`}>
-                        <info.icon className="h-6 w-6" />
+                <AnimatedSection key={info.label} animation="fade-up" delay={200 + index * 100}>
+                  <Card className="bg-gradient-card border-border/50 hover:border-primary/30 transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-12 h-12 rounded-xl ${getIconColor(info.color)} flex items-center justify-center`}>
+                          <info.icon className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-foreground">{info.label}</h4>
+                          <a 
+                            href={info.href} 
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
+                            target={info.href.startsWith('http') ? '_blank' : undefined}
+                            rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          >
+                            {info.value}
+                          </a>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold text-foreground">{info.label}</h4>
-                        <a 
-                          href={info.href} 
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
-                          target={info.href.startsWith('http') ? '_blank' : undefined}
-                          rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        >
-                          {info.value}
-                        </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
               ))}
             </div>
 
-            {/* Quick stats */}
-            <div className="grid grid-cols-3 gap-4 pt-8">
-              {[
-                { number: "2+", label: "Years Experience" },
-                { number: "10+", label: "Projects Completed" },
-                { number: "24/7", label: "Support Available" }
-              ].map((stat, index) => (
-                <div 
-                  key={stat.label} 
-                  className="text-center animate-scale-in"
-                  style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-                >
-                  <div className="text-2xl font-bold text-primary">{stat.number}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
+            {/* Quick stats with animated counters */}
+            <div ref={statsRef} className="grid grid-cols-3 gap-4 pt-8">
+              <AnimatedSection animation="fade-up" delay={600} className="text-center">
+                <div className="text-2xl font-bold text-primary">{experienceCount}+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-up" delay={700} className="text-center">
+                <div className="text-2xl font-bold text-primary">{projectsCount}+</div>
+                <div className="text-sm text-muted-foreground">Projects Completed</div>
+              </AnimatedSection>
+              <AnimatedSection animation="fade-up" delay={800} className="text-center">
+                <div className="text-2xl font-bold text-primary">24/7</div>
+                <div className="text-sm text-muted-foreground">Support Available</div>
+              </AnimatedSection>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Contact Form */}
-          <Card className="bg-gradient-card border-border/50 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-foreground">Send me a message</CardTitle>
-            </CardHeader>
+          <AnimatedSection animation="fade-left" delay={200}>
+            <Card className="bg-gradient-card border-border/50">
+              <CardHeader>
+                <CardTitle className="text-2xl font-bold text-foreground">Send me a message</CardTitle>
+              </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -239,11 +244,12 @@ const Contact = () => {
                 </Button>
               </form>
             </CardContent>
-          </Card>
+            </Card>
+          </AnimatedSection>
         </div>
 
         {/* Footer */}
-        <div className="border-t border-border/50 mt-20 pt-8 text-center animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        <AnimatedSection animation="fade-up" delay={400} className="border-t border-border/50 mt-20 pt-8 text-center">
           <p className="text-muted-foreground">
             © 2024 Shubhanjal Sharma. Built with React, TypeScript, and Tailwind CSS.
           </p>
@@ -269,7 +275,7 @@ const Contact = () => {
               <Phone className="h-5 w-5" />
             </a>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

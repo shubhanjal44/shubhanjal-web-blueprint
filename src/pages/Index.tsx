@@ -6,10 +6,12 @@ import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
 import Services from '@/components/Services';
 import Contact from '@/components/Contact';
+import ScrollProgress from '@/components/ScrollProgress';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <ScrollProgress />
       <Navigation />
       <Hero />
       <About />
