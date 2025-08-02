@@ -197,7 +197,7 @@ const Projects = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className="border-primary/30 hover:bg-primary/10 hover:border-primary transition-all duration-300"
+            className="border-primary/30 hover:bg-primary/10 hover:border-primary hover:text-color-white transition-all duration-300"
           >
             <Github className="h-5 w-5 mr-2" />
             View All Projects on GitHub

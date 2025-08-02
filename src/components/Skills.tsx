@@ -14,22 +14,24 @@ import {
 
 const Skills = () => {
   const skillCategories = [
+  {
+  title: "Languages",
+  icon: Code,
+  color: "from-yellow-400 via-red-400 to-purple-500",
+  iconColor: "text-yellow-900",  // <-- THIS COMMA WAS MISSING
+  skills: [
+    { name: "JavaScript", level: 90 },
+    { name: "Java", level: 85 },
+    { name: "HTML", level: 95 },
+    { name: "CSS", level: 90 },
+    { name: "SQL", level: 80 }
+  ]
+},
     {
-      title: "Languages",
-      icon: Code,
-      color: "primary",
-      skills: [
-        { name: "JavaScript", level: 90 },
-        { name: "Java", level: 85 },
-        { name: "HTML", level: 95 },
-        { name: "CSS", level: 90 },
-        { name: "SQL", level: 80 }
-      ]
-    },
-    {
-      title: "Frontend",
-      icon: Monitor,
-      color: "secondary",
+     title: "Frontend",
+    icon: Globe,
+    color: "from-blue-400 via-cyan-400 to-purple-400",
+    iconColor: "text-cyan-900",
       skills: [
         { name: "React", level: 90 },
         { name: "Next.js", level: 85 },
@@ -38,9 +40,10 @@ const Skills = () => {
       ]
     },
     {
-      title: "Backend",
-      icon: Server,
-      color: "accent",
+     title: "Backend",
+    icon: Server,
+    color: "from-green-400 via-emerald-400 to-teal-400",
+    iconColor: "text-emerald-900",
       skills: [
         { name: "Node.js", level: 85 },
         { name: "Express.js", level: 90 },
@@ -48,9 +51,10 @@ const Skills = () => {
       ]
     },
     {
-      title: "Databases",
-      icon: Database,
-      color: "primary",
+    title: "Databases",
+    icon: Database,
+    color: "from-pink-400 via-fuchsia-400 to-violet-400",
+    iconColor: "text-pink-900",
       skills: [
         { name: "MongoDB", level: 85 },
         { name: "PostgreSQL", level: 80 },
@@ -58,9 +62,10 @@ const Skills = () => {
       ]
     },
     {
-      title: "Security & Protocols",
-      icon: Shield,
-      color: "secondary",
+         title: "Security & Protocols",
+    icon: Shield,
+    color: "from-orange-300 via-amber-400 to-yellow-400",
+    iconColor: "text-orange-900",
       skills: [
         { name: "JWT", level: 85 },
         { name: "OAuth 2.0", level: 80 },
@@ -70,9 +75,10 @@ const Skills = () => {
       ]
     },
     {
-      title: "Dev Tools",
-      icon: Settings,
-      color: "accent",
+     title: "Dev Tools",
+    icon: Settings,
+    color: "from-gray-400 via-zinc-400 to-neutral-400",
+    iconColor: "text-gray-900",
       skills: [
         { name: "Git", level: 90 },
         { name: "GitHub", level: 90 },
@@ -123,34 +129,39 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
-            <Card 
-              key={category.title} 
-              className={`${getColorClasses(category.color)} transition-all duration-300 hover:shadow-elegant animate-scale-in`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 rounded-lg bg-background/20 flex items-center justify-center`}>
-                    <category.icon className={`h-5 w-5 ${getIconColor(category.color)}`} />
-                  </div>
-                  <span className="text-foreground">{category.title}</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                      <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <Progress 
-                      value={skill.level} 
-                      className="h-2 bg-background/20"
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+           <Card
+  className={`rounded-xl bg-gradient-to-br ${category.color} border-none shadow-lg hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-scale-in`}
+  style={{ animationDelay: `${index * 0.1}s` }}
+>
+  <CardHeader className="pb-4">
+    <CardTitle className="flex items-center space-x-3">
+      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center shadow-sm">
+        {/* <category.icon className={`h-7 w-7 ${category.iconColor} drop-shadow-md`} /> */}
+        <div className="w-14 h-14 rounded-xl bg-white/50 flex items-center justify-center shadow-md">
+  <category.icon className={`h-10 w-10 ${category.iconColor} drop-shadow-lg`} />
+</div>
+
+        
+      </div>
+      <span className="text-foreground">{category.title}</span>
+    </CardTitle>
+  </CardHeader>
+  <CardContent className="space-y-4">
+    {category.skills.map((skill) => (
+      <div key={skill.name} className="space-y-2">
+        <div className="flex justify-between items-center">
+          <span className="text-sm font-medium text-white">{skill.name}</span>
+          <span className="text-xs text-white/80">{skill.level}%</span>
+        </div>
+        <Progress
+          value={skill.level}
+          className="h-2 bg-white/20"
+          // Or use category color for foreground bar
+        />
+      </div>
+    ))}
+  </CardContent>
+</Card>
           ))}
         </div>
 
@@ -159,6 +170,7 @@ const Skills = () => {
           <h3 className="text-2xl font-bold mb-8 text-foreground">
             Additional Technologies & Frameworks
           </h3>
+          
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {[
               'REST APIs', 'GraphQL', 'Redis', 'Firebase', 'Stripe Integration',
