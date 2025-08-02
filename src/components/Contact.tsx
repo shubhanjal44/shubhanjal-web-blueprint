@@ -5,6 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
+import { supabase } from '@/lib/supabaseClient'; // adjust path accordingly
+
 import { 
   Mail, 
   Phone, 
@@ -67,20 +69,40 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Message Sent Successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 2000);
-  };
+  const { data, error } = await supabase
+    .from('contact_form')
+    .insert([
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      },
+    ]);
+
+  if (error) {
+    setIsSubmitting(false);
+    toast({
+      title: "Error sending message",
+      description: error.message,
+      variant: "destructive",
+    });
+    return;
+  }
+
+  toast({
+    title: "Message Sent Successfully!",
+    description: "Thank you for reaching out. I'll get back to you soon.",
+  });
+
+  setFormData({ name: '', email: '', subject: '', message: '' });
+  setIsSubmitting(false);
+};
+
 
   const getIconColor = (color: string) => {
     switch (color) {
