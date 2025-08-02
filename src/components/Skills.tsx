@@ -1,6 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import MotionProgress from "@/components/MotionProgress";
+
+
+
+
 import { 
   Code, 
   Database, 
@@ -150,14 +155,12 @@ const Skills = () => {
     {category.skills.map((skill) => (
       <div key={skill.name} className="space-y-2">
         <div className="flex justify-between items-center">
-          <span className="text-sm font-medium text-white">{skill.name}</span>
-          <span className="text-xs text-white/80">{skill.level}%</span>
+          <span className="text-sm font-medium text-black">{skill.name}</span>
+          <span className="text-xs text-black/80 ">{skill.level}%</span>
         </div>
-        <Progress
-          value={skill.level}
-          className="h-2 bg-white/20"
-          // Or use category color for foreground bar
-        />
+    <MotionProgress value={skill.level} />
+
+
       </div>
     ))}
   </CardContent>
