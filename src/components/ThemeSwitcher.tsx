@@ -1,6 +1,7 @@
 import React from "react";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
-import ScrollProgress from "../components/ScrollProgress"; // Adjust path if needed
+import ScrollProgress from "../components/ScrollProgress";
 import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -10,27 +11,21 @@ import Projects from "../components/Projects";
 import Services from "../components/Services";
 import Contact from "../components/Contact";
 
-import ThemeSwitcher from "../components/ThemeSwitcher";
-//...
-<ThemeSwitcher />
-
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Add theme switcher somewhere visible, e.g., on top */}
-
+      {/* Place ThemeSwitcher here so it renders */}
+      <ThemeSwitcher />
 
       <ScrollProgress />
       <Navigation />
       <Hero />
       <About />
-       
       <Skills />
       <Experience />
       <Projects />
       <Services />
       <Contact />
-      
     </div>
   );
 };

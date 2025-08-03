@@ -59,7 +59,9 @@ const Hero = () => {
                 <span className="block text-foreground">Hello, I'm</span>
                 <span className="block bg-gradient-primary bg-clip-text text-transparent">
                   Shubhanjal Sharma
+                  
                 </span>
+                
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground font-medium">
                 Full Stack Developer & Computer Science Student
@@ -88,7 +90,7 @@ const Hero = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-primary/50 hover:bg-primary/10 transition-all duration-300"
+                  className="border-primary/50 hover:bg-primary/10 transition-all duration-300 color-white "
                   onClick={() => scrollToSection("contact")}
                 >
                   <Mail className="mr-2 h-5 w-5" />

@@ -9,7 +9,7 @@ const About = () => {
     <section id="about" className="py-20 bg-background-secondary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection animation="fade-up" className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 ">
             About <span className="bg-gradient-primary bg-clip-text text-transparent">Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -25,7 +25,7 @@ const About = () => {
                 <img 
                   src={profileImage} 
                   alt="Shubhanjal Sharma"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover hover:scale-105 "
                 />
               </ParallaxElement>
               <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-primary rounded-xl flex items-center justify-center shadow-primary">
