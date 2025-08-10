@@ -1,5 +1,7 @@
 import React from "react";
 
+import SkillCarousel from '../components/SkillCarousel';
+
 import ScrollProgress from "../components/ScrollProgress"; // Adjust path if needed
 import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
@@ -10,9 +12,9 @@ import Projects from "../components/Projects";
 import Services from "../components/Services";
 import Contact from "../components/Contact";
 
-import ThemeSwitcher from "../components/ThemeSwitcher";
-//...
-<ThemeSwitcher />
+
+
+
 
 const Index = () => {
   return (
@@ -23,8 +25,9 @@ const Index = () => {
       <ScrollProgress />
       <Navigation />
       <Hero />
+    <SkillCarousel />
       <About />
-       
+      
       <Skills />
       <Experience />
       <Projects />

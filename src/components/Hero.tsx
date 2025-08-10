@@ -59,9 +59,7 @@ const Hero = () => {
                 <span className="block text-foreground">Hello, I'm</span>
                 <span className="block bg-gradient-primary bg-clip-text text-transparent">
                   Shubhanjal Sharma
-                  
                 </span>
-                
               </h1>
               <h2 className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground font-medium">
                 Full Stack Developer & Computer Science Student
@@ -90,12 +88,16 @@ const Hero = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-primary/50 hover:bg-primary/10 transition-all duration-300 color-white "
+                  className="border-primary/50 transition-all duration-300 text-white "
                   onClick={() => scrollToSection("contact")}
                 >
-                  <Mail className="mr-2 h-5 w-5" />
+                  <Mail className="mr-2 h-5 w-5 text-white" />
                   Contact Me
                 </Button>
+                
+                 
+                 
+               
               </div>
             </AnimatedSection>
 
@@ -105,14 +107,14 @@ const Hero = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors text-white "
                 >
                   <Github className="h-5 w-5" />
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors text-white"
                   onClick={() =>
                     window.open(
                       "https://linkedin.com/in/shubhanjalsharma",
@@ -125,7 +127,7 @@ const Hero = () => {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors text-white"
                   onClick={() =>
                     window.open("mailto:shubhanjalsharma@gmail.com")
                   }
@@ -150,9 +152,8 @@ const Hero = () => {
                 <div></div>
               </ParallaxElement>
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-elegant">
-               
                 <img
-                  src={profileImage} 
+                  src={profileImage}
                   className="w-full h-full  object-cover hover:scale-105 rounded-full shadow-lg"
                   alt="Profile"
                 />

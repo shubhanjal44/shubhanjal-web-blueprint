@@ -9,7 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./ThemeContext"; // Adjust path
 
-import ChatBot from "react-chatbotify";
+
 
 const queryClient = new QueryClient();
 
@@ -33,19 +33,8 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            {/* Floating Chatbot Widget */}
-            <div
-              style={{
-                position: "fixed",
-                bottom: 20,
-                right: 20,
-                zIndex: 9999,
-              }}
-            >
-              <ChatBot />
-            </div>
-
-            {/* Normal Routing */}
+    
+          
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="*" element={<NotFound />} />

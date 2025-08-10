@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+// import ThemeToggle from "./ThemeToggle"; // adjust path if in ui/
+
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
