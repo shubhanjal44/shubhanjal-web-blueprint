@@ -121,7 +121,8 @@ const handleSubmit = async (e: React.FormEvent) => {
     <section id="contact" className="py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection animation="fade-up" className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-whiteee4">
+          
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Let's <span className="bg-gradient-primary bg-clip-text text-transparent">Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
