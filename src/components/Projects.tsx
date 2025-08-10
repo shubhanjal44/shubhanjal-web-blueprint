@@ -174,7 +174,8 @@ const Projects = () => {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="flex-1 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300"
+                    className="flex-1 hover:bg-primary/50 hover:border-primary/50 transition-all duration-300 text-white"
+                      
                   >
                     <Github className="h-4 w-4 mr-2" />
                     Code
@@ -194,14 +195,15 @@ const Projects = () => {
 
         {/* More projects button */}
         <div className="text-center mt-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-primary/30 hover:bg-primary/10 hover:border-primary hover:text-color-white transition-all duration-300"
-          >
-            <Github className="h-5 w-5 mr-2" />
-            View All Projects on GitHub
-          </Button>
+          <Button
+  variant="outline"
+  size="lg"
+  className="border-primary/50 transition-all duration-300 text-white"
+>
+  <Github className="mr-2 h-5 w-5 text-white" />
+  View All Projects on GitHub
+</Button>
+
         </div>
       </div>
     </section>
