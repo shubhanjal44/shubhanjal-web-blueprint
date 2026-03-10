@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import SkillCarousel from '../components/SkillCarousel';
 
@@ -12,29 +13,29 @@ import Projects from "../components/Projects";
 import Services from "../components/Services";
 import Contact from "../components/Contact";
 
-
-
-
-
-const Index = () => {
+const HomePage = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Add theme switcher somewhere visible, e.g., on top */}
-
-
       <ScrollProgress />
       <Navigation />
       <Hero />
-    <SkillCarousel />
+      {/* <SkillCarousel /> */}
       <About />
-      
       <Skills />
       <Experience />
       <Projects />
       <Services />
       <Contact />
-      
     </div>
+  );
+};
+
+const Index = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      {/* Future subpages can be added here */}
+    </Routes>
   );
 };
 

@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to My project
 
 ## Project info
 
@@ -10,7 +10,7 @@
 
 **Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+If you want to work locally using your own IDE, you can clone this repo and push changes. 
 
 The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
@@ -54,8 +54,6 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
 
 
